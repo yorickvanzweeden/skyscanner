@@ -1,0 +1,80 @@
+{
+  "legs": [
+    {
+      "start_airport": [
+        "AMS",
+        "EIN"
+      ],
+      "end_airport": [
+        "DXB",
+        "AUH"
+      ],
+      "start_date": "2024-01-25T00:00:00",
+      "end_date": "2024-02-03T00:00:00"
+    },
+    {
+      "start_airport": [
+        "DXB"
+      ],
+      "end_airport": [
+        "SIN",
+        "KUL",
+        "MNL"
+      ],
+      "start_date": "2024-01-27T00:00:00",
+      "end_date": "2024-02-05T00:00:00"
+    },
+
+
+    {
+      "start_airport": [
+        "SIN",
+        "KUL",
+        "MNL"
+      ],
+      "end_airport": [
+        "BKI"
+      ],
+      "start_date": "2024-01-27T00:00:00",
+      "end_date": "2024-02-09T00:00:00"
+    },
+    {
+      "start_airport": [
+        "BKI"
+      ],
+      "end_airport": [
+        "MNL",
+        "KUL",
+        "SIN"
+      ],
+      "start_date": "2024-02-04T00:00:00",
+      "end_date": "2024-02-25T00:00:00"
+    },
+    {
+      "start_airport": [
+        "MNL",
+        "KUL",
+        "SIN"
+      ],
+      "end_airport": [
+        "SGN"
+      ],
+      "start_date": "2024-02-04T00:00:00",
+      "end_date": "2024-02-25T00:00:00"
+    },
+
+    {
+      "start_airport": [
+        "BKK",
+        "HKT",
+        "KBV"
+      ],
+      "end_airport": [
+        "AMS",
+        "EIN"
+      ],
+      "start_date": "2024-03-16T00:00:00",
+      "end_date": "2024-03-24T00:00:00"
+    }
+  ]
+}

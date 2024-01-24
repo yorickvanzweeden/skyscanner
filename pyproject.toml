@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "skyscanner"
+version = "0.1.0"
+description = ""
+authors = ["Yorick van Zweeden <git@yorickvanzweeden.nl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^2.4.2"
+fastapi = "^0.103.2"
+uvicorn = "^0.23.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+exclude = ["data"]
+warn_unused_ignores = false
+disallow_any_generics = false
+plugins = [
+  "pydantic.mypy"
+]
+
+[tool.ruff]
+exclude = ["data"]
+target-version = "py310"
+line-length = 120
+
+# E: PEP8 (pycodestyle)
+# F: PyFlakes (syntax errors)
+# I: isort (import sorting)
+# B: flake8-bugbear
+# ARG: flake8-unused-arguments
+# RUF200: invalid-pyproject-toml
+# RET: flake8-return (checks return values)
+# UP: pypgrade (automatically upgrade syntax for newer versions of the language)
+# PGH: pygrep-hooks (regex-based checks)
+select = ["E", "F", "I", "B", "ARG", "RUF200", "RET", "UP", "PGH"]
+
+[tool.black]
+line-length = 120
+fast = true
