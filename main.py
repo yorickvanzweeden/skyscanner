@@ -1,9 +1,11 @@
 import datetime
 import random
+from typing import Any, Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from starlette.responses import JSONResponse
 
 from read_config import load_data, save_data
 from schemas import Offer
@@ -19,14 +21,14 @@ app.add_middleware(
 storage = load_data()
 
 
-@app.get("/legoption/")
-async def read_leg_option() -> JSONResponse | Offer:
+@app.get("/legoption/", response_model=Offer)
+async def read_leg_option() -> Offer:
     """Fetch first uncalculated leg option"""
     non_calculated_leg_options = [option for option in storage if option.price is None]
 
     # Check if all options have a price --> if so, return 404
     if not non_calculated_leg_options:
-        return JSONResponse(content="No non-calculated LegOptions found!", status_code=404)
+        raise HTTPException(status_code=404, detail="Item not found")
 
     # Pick random LegOption that has not been calculated yet
     return random.choice(non_calculated_leg_options)
@@ -41,7 +43,7 @@ async def create_leg_option(
     stops: int,
     start_time: datetime.datetime,
     end_time: datetime.datetime,
-) -> int | JSONResponse:
+) -> int:
     """Create leg option"""
     # Get item in storage
     items = [
@@ -52,7 +54,7 @@ async def create_leg_option(
         and item.fly_date.date() == fly_date.date()
     ]
     if len(items) == 0:
-        return JSONResponse(content="LegOption doesn't exist", status_code=404)
+        raise HTTPException(status_code=404, detail="Item not found")
 
     item = items[0]
     item.price = price
